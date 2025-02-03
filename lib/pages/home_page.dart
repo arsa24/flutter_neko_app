@@ -90,7 +90,7 @@ class _Home extends State<Home> {
                           child: ImgAnimeCard(
                               img: _imgurls[index]['url'],
                               show: isShowR18 ? true : _imgurls[index]['rating'] == "safe" ? true : false,
-                              id: _imgurls[index]['id']))),
+                              id: _imgurls[index]['id'])))
             )));
   }
 }
