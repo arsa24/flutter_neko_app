@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:neko_app/pages/home_page.dart";
+import "package:neko_app/pages/search_page.dart";
 import "package:neko_app/pages/setting_page.dart";
 
 class Navbar extends StatefulWidget {
@@ -13,9 +14,7 @@ class _BottomNavigation extends State<Navbar> {
 
   final List<Widget> _pages = [
     Home(),
-    const Center(
-      child: Text("Search"),
-    ),
+    SearchPage(),
     const Center(
       child: Text("Save"),
     ),

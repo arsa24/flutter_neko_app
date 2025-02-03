@@ -89,7 +89,7 @@ class _Home extends State<Home> {
                           padding: EdgeInsets.all(1),
                           child: ImgAnimeCard(
                               img: _imgurls[index]['url'],
-                              show: isShowR18 ? true : false,
+                              show: isShowR18 ? true : _imgurls[index]['rating'] == "safe" ? true : false,
                               id: _imgurls[index]['id']))),
             )));
   }
