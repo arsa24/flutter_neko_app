@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:neko_app/components/img_anime_card.dart';
+import 'package:neko_app/components/toggle_provider.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -57,6 +59,9 @@ class _Home extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final toggleprov = Provider.of<ToggleProvider>(context, listen: false);
+    bool isShowR18 = toggleprov.isR18;
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Home"),
@@ -84,9 +89,7 @@ class _Home extends State<Home> {
                           padding: EdgeInsets.all(1),
                           child: ImgAnimeCard(
                               img: _imgurls[index]['url'],
-                              show: _imgurls[index]["rating"] == "safe"
-                                  ? true
-                                  : false,
+                              show: isShowR18 ? true : false,
                               id: _imgurls[index]['id']))),
             )));
   }
