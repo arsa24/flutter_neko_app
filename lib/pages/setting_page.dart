@@ -23,11 +23,11 @@ class SettingPage extends StatelessWidget {
                   ToggleButton(
                     text: "Dark mode",
                     value: toggleProvider.isDarkMode,
-                    onTogle: toggleProvider.ToggleDarkMode,
+                    onTogle: toggleProvider.toggleDarkMode,
                   ),
                   ToggleButton(
                     text: "Show R18 content",
-                    onTogle: toggleProvider.ToggleR18,
+                    onTogle: toggleProvider.toggleR18,
                     value: toggleProvider.isR18,
                   )
                 ],

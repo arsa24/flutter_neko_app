@@ -4,12 +4,12 @@ class ToggleProvider with ChangeNotifier {
   bool isDarkMode = false;
   bool isR18 = false;
 
-  void ToggleDarkMode() {
+  void toggleDarkMode() {
     isDarkMode = !isDarkMode;
     notifyListeners();
   }
 
-  void ToggleR18() {
+  void toggleR18() {
     isR18 = !isR18;
     notifyListeners();
   }

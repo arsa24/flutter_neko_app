@@ -17,8 +17,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Navbar(),
-    );
+    return Consumer<ToggleProvider>(builder: (context, toggleprov, child) {
+      return MaterialApp(
+        theme: ThemeData(
+            brightness: toggleprov.isDarkMode ? Brightness.dark : Brightness.light),
+        home: Navbar(),
+      );
+    });
   }
 }

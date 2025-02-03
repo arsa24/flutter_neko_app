@@ -59,38 +59,41 @@ class _Home extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final toggleprov = Provider.of<ToggleProvider>(context, listen: false);
-    bool isShowR18 = toggleprov.isR18;
-
     return Scaffold(
         appBar: AppBar(
           title: Text("Home"),
         ),
-        body: NotificationListener<ScrollNotification>(
-            onNotification: (scrollNotif) {
-              if (scrollNotif is ScrollUpdateNotification) {
-                if (scrollNotif.metrics.pixels ==
-                    scrollNotif.metrics.maxScrollExtent) {
-                  getNeko();
+        body: Consumer<ToggleProvider>(builder: (context, toggleprov, child) {
+          bool isShowR18 = toggleprov.isR18;
+          return NotificationListener<ScrollNotification>(
+              onNotification: (scrollNotif) {
+                if (scrollNotif is ScrollUpdateNotification) {
+                  if (scrollNotif.metrics.pixels ==
+                      scrollNotif.metrics.maxScrollExtent) {
+                    getNeko();
+                  }
                 }
-              }
-              return false;
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4),
-              child: _imgurls.isEmpty
-                  ? const Center(child: CircularProgressIndicator())
-                  : MasonryGridView.builder(
-                      gridDelegate:
-                          SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemCount: _imgurls.length,
-                      itemBuilder: (context, index) => Padding(
-                          padding: EdgeInsets.all(1),
-                          child: ImgAnimeCard(
-                              img: _imgurls[index]['url'],
-                              show: isShowR18 ? true : _imgurls[index]['rating'] == "safe" ? true : false,
-                              id: _imgurls[index]['id'])))
-            )));
+                return false;
+              },
+              child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4),
+                  child: _imgurls.isEmpty
+                      ? const Center(child: CircularProgressIndicator())
+                      : MasonryGridView.builder(
+                          gridDelegate:
+                              SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemCount: _imgurls.length,
+                          itemBuilder: (context, index) => Padding(
+                              padding: EdgeInsets.all(1),
+                              child: ImgAnimeCard(
+                                  img: _imgurls[index]['url'],
+                                  show: isShowR18
+                                      ? true
+                                      : _imgurls[index]['rating'] == "safe"
+                                          ? true
+                                          : false,
+                                  id: _imgurls[index]['id'])))));
+        }));
   }
 }

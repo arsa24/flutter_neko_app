@@ -11,7 +11,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPage extends State<SearchPage> {
-  final List<Map<String, dynamic>> _searchData = [];
+  // final List<Map<String, dynamic>> _searchData = [];
   Future searchByID(String id) async {
     final response =
         await get(Uri.parse("https://api.nekosapi.com/v4/images/$id"));
